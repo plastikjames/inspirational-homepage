@@ -9,11 +9,12 @@ export const backgroundSlice = createSlice({
     initialState: initialState,
     reducers: {
         changeImg: (state, action) => {
-            state.selectedImage = action.payload.selectedImage;
+            console.log(action.payload);
+            state.selectedImage = action.payload;
         }
     }
 });
 
 export const { changeImg } = backgroundSlice.actions;
+export const selectImg = (state) => state.background.selectedImage;
 export default backgroundSlice.reducer;
-export const selectImages = (state) = state.images;
