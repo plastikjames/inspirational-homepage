@@ -12,7 +12,7 @@ const BackgroundButtons = () => {
       <div id="buttoncontainer">
         <button value="left" onClick={() => {if (selectedImage !== 0) {dispatch(changeImg(selectedImage -1))}}}><SlArrowLeft/></button>
         {dashes.map(dash => {
-            return <button value={dash} onClick={() => dispatch(changeImg(dash))}><BsDash/></button>
+            return <button value={dash} key={dash} onClick={() => dispatch(changeImg(dash))}><BsDash/></button>
         })}
         <button value="right" onClick={() => {if (selectedImage !== 9) {dispatch(changeImg(selectedImage +1))}}}><SlArrowRight/></button>
       </div>

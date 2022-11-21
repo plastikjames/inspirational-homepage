@@ -37,7 +37,10 @@ code {
 #buttoncontainer {
   background-color: grey;
   opacity: .5;
-
+  bottom: 0px;
+  position: fixed;
+  text-align: center;
+  width: 100vw;
 }
 
 button {
