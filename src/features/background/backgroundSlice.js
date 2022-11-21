@@ -25,7 +25,6 @@ export const backgroundSlice = createSlice({
     initialState: initialState,
     reducers: {
         changeImg: (state, action) => {
-            console.log(action.payload);
             state.selectedImage = action.payload;
         }
     },
