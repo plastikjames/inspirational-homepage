@@ -1,7 +1,7 @@
 const GoalsInput = () => {
     return (
         <div id="goalsinput">
-            <h2>This is for the goals input</h2>
+            <h2>Whats on your mind today?</h2>
         </div>
     )
 }

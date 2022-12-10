@@ -8,7 +8,7 @@ import BackgroundButtons from './features/background/backgroundButtons';
 import { selectImg, selectImages, isLoadingImages, loadBackgroundImages } from './features/background/backgroundSlice';
 import './App.css';
 
-let img = "starwars"; // sets the mood of the images
+let img = "gisborne"; // sets the mood of the images
 
 function App() {
   const selectedImage = useSelector(selectImg);
@@ -18,7 +18,7 @@ function App() {
 
   useEffect(() => {
     dispatch(loadBackgroundImages(img));
-  }, []);
+  }, [dispatch]);
 
   if (imagesAreLoading || !images[1]) return <div>Loading Images</div>
 
@@ -28,7 +28,7 @@ function App() {
         backgroundImage: `url(${images[selectedImage].urls.regular})`
         }}
         >
-        <h1 id="title">What's on your mind?</h1>
+        <h1 id="title">Inspirational Homepage</h1>
         <div>
           <Weather />
           <GoalsInput />

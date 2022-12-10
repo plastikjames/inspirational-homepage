@@ -13,10 +13,11 @@ code {
 }
 
 #weatherbox {
-  height: 100px;
-  width: 100px;
   background-color: blue;
   margin: 20px;
+  right: 50px;
+  position: absolute;
+  padding: 10px;
 }
 
 #title {

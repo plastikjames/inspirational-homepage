@@ -6,7 +6,7 @@ export const loadWeatherAPI = createAsyncThunk(
     'weather/loadWeatherAPI',
     async(location) => {
     const data = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.lon}&appid=${apiKey}`
+      `https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.lon}&appid=${apiKey}&units=metric`
     );
     const dataJ = await data.json();
     return(dataJ);
@@ -28,7 +28,6 @@ export const weatherSlice = createSlice({
             state.failedToLoadWeather = false;
         },
         [loadWeatherAPI.fulfilled]: (state, action) => {
-            console.log(action.payload);
             state.weatherNow = action.payload;
             state.isLoadingWeather = false;
             state.failedToLoadWeather = false;
