@@ -5,10 +5,11 @@ import GoalsInput from './features/goals/goalsInput';
 import GoalsList from './features/goals/goalsList';
 import Quote from './features/quote/quote';
 import BackgroundButtons from './features/background/backgroundButtons';
+import ControlledCarousel from './features/background/background';
 import { selectImg, selectImages, isLoadingImages, loadBackgroundImages } from './features/background/backgroundSlice';
 import './App.css';
 
-let img = "gisborne"; // sets the mood of the images
+let img = "dune"; // sets the mood of the images
 
 function App() {
   const selectedImage = useSelector(selectImg);
@@ -24,10 +25,8 @@ function App() {
 
   return (
     <div className="App">
-      <div className="container" style={{
-        backgroundImage: `url(${images[selectedImage].urls.regular})`
-        }}
-        >
+      <div>
+        <ControlledCarousel />
         <h1 id="title">Inspirational Homepage</h1>
         <div>
           <Weather />
@@ -35,9 +34,9 @@ function App() {
           <GoalsList />
           <Quote />
         </div>
-        <BackgroundButtons />
       </div>
     </div>
+
   );
 }
 
