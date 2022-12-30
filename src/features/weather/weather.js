@@ -16,7 +16,7 @@ const Weather = () => {
     if (weatherIsLoading || Object.keys(weatherNow).length === 0) return <div>Loading Weather</div>
 
     return (
-        <div id="weatherbox">
+        <div id="weatherbox" className="rounded">
             <div>
                 <img id="wicon" src={"http://openweathermap.org/img/w/" + weatherNow.weather[0].icon + ".png"} alt="Weather icon"></img>
             </div>
