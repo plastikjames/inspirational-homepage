@@ -8,7 +8,7 @@ import ControlledCarousel from './features/background/background';
 import { selectImages, isLoadingImages, loadBackgroundImages } from './features/background/backgroundSlice';
 import './App.css';
 
-let img = "tech"; // sets the mood of the images
+let img = "pregnancy"; // sets the mood of the images
 
 function App() {
   const images = useSelector(selectImages);
@@ -22,16 +22,26 @@ function App() {
   if (imagesAreLoading || !images[1]) return <div>Loading Images</div>
 
   return (
-    <div className="App">
+    <div className="App container-flex">
       <ControlledCarousel />
-      <div>
 
-
-
-        <Weather />
-        <GoalsInput />
-        <GoalsList />
+      <div className="title py-3">
+        <h1 className="display-3 text-light">Inspirational Homepage</h1>
         <Quote />
+      </div>
+      <div className="container">
+        <div className="row">
+          <div className="col"></div>
+          <div className="col-8">
+            <div className="row py-3">
+              <Weather />
+              <GoalsInput />
+              <GoalsList />
+            </div>
+          </div>
+          <div className="col"></div>
+        </div>
+
       </div>
     </div>
   );
