@@ -4,10 +4,10 @@ import { selectWeather, isLoadingWeather, loadWeatherAPI } from './weatherSlice'
 
 const location = { lat: -38.661819, lon: 178.028928 };
 
-navigator.geolocation.getCurrentPosition(function(position) {
+navigator.geolocation.getCurrentPosition(function (position) {
     console.log(position.coords);
-    location.lat=position.coords.latitude;
-    location.lon=position.coords.longitude;
+    location.lat = position.coords.latitude;
+    location.lon = position.coords.longitude;
 });
 
 
@@ -21,7 +21,7 @@ const Weather = () => {
     }, [dispatch]);
 
     if (weatherIsLoading || Object.keys(weatherNow).length === 0) return <div>Loading Weather</div>
-    console.log(weatherNow);
+
 
     return (
         <div id="weatherbox" className="rounded border border-light glasspane text-white">

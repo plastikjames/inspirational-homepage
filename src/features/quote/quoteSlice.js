@@ -2,22 +2,23 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const loadDailyQuote = createAsyncThunk(
     'quote/loadDailyQuote',
-    async() => {
-    const data = await fetch(
-      `https://quotes.rest/qod?language=en`
-    );
-    const dataJ = await data.json();
-    return(dataJ);
-  }
+    async () => {
+        const data = await fetch(
+            `https://quotes.rest/qod?language=en`
+        );
+        const dataJ = await data.json();
+        return (dataJ);
+    }
 )
 
-const initialState = { 
+const initialState = {
     quote: {},
     isLoadingQuote: false,
-    failedToLoadQuote: false };
+    failedToLoadQuote: false
+};
 
 
-export const quoteSlice = createSlice({ 
+export const quoteSlice = createSlice({
     name: 'quote',
     initialState: initialState,
     reducers: {},
@@ -28,7 +29,6 @@ export const quoteSlice = createSlice({
         },
         [loadDailyQuote.fulfilled]: (state, action) => {
             state.quote = action.payload.contents.quotes[0];
-            console.log(action.payload.contents.quotes[0]);
             state.isLoadingQuote = false;
             state.failedToLoadQuote = false;
         },

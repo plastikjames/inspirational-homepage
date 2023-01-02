@@ -1,46 +1,33 @@
-import React, { useState } from "react";
-import GoalCard from "./goalCard";
+import React from "react";
 import { useSelector } from 'react-redux';
-import { selectGoals } from './goalsSlice';
+import { selectGoals, removeGoal, completeGoal } from './goalsSlice';
+import { useDispatch } from 'react-redux';
+import { CgCloseR, CgCheckR } from 'react-icons/cg';
 
 const GoalsList = () => {
-    const [display, setDisplay] = useState("notdisplayed");
-    const showButton = e => {
-        e.preventDefault();
-        setDisplay("displayed");
-    };
-
-    const hideButton = e => {
-        e.preventDefault();
-        setDisplay("notdisplayed");
-    };
 
     const goals = useSelector(selectGoals);
+    const dispatch = useDispatch();
 
     return (
-        <div id="goalslist" className="rounded border border-light glasspane text-white">
-            <div className="container">
-                <div className="row">
-                    <div className="col"></div>
-                    <div className="col-11">
-                        <div className="row">
-                            {goals.map((goal) => {
-                                return (
-                                    <div className="col-2 border border-secondary m-2 align-items-center productbox" onMouseEnter={e => showButton(e)}
-                                        onMouseLeave={e => hideButton(e)}>
-                                        <p>{goal.goal}</p>
-                                        <div>
-                                            <button className={display}>I might be an invisible button</button>
-                                        </div>
-                                    </div>
-                                )
-                            })}
-                        </div>
-                    </div>
-                    <div className="col"></div>
+        <div className="rounded border border-light glasspane text-white">
+                <div className="d-flex flex-row flex-wrap justify-content-center" >
+                    {goals.map((goal) => {
+                        return (
+                            <div className="border border-white rounded align-items-center m-2 p-3 d-flex goalbox"
+                                style={{ backgroundColor: goal.completed ? "rgba(95, 95, 95, 0.5)" : goal.color, opacity: goal.completed ? "0.5" : "1" }}
+                                key={goal.id}>
+                                <div className="d-flex flex-row absolute">
+                                    <button value={goal.id} type="button" className="displaybutton" onClick={() => dispatch(completeGoal(goal.id))}><CgCheckR value={goal.id} /></button>
+                                    <button value={goal.id} type="button" className="displaybutton" onClick={() => dispatch(removeGoal(goal.id))}><CgCloseR value={goal.id} /></button>
+                                </div>
+                                <div>
+                                    <p className="py-0 my-0" >{goal.goal}</p>
+                                </div>
+                            </div>
+                        )
+                    })}
                 </div>
-            </div>
-            <GoalCard />
         </div>
     )
 }

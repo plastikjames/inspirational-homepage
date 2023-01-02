@@ -12,8 +12,6 @@ code {
     monospace;
 }
 
-#weatherbox {}
-
 .title {
   background-image: linear-gradient(rgba(0, 0, 0, 1),
       rgba(0, 0, 0, 0));
@@ -33,27 +31,41 @@ button:hover {
   transform: translateY(-2px);
 }
 
-#goalsinput>h2 {
-  opacity: 1;
+.goalbox {
+  position: relative;
+  max-width: 230px;
 }
 
-#quote {
-
-}
-
-.notdisplayed {
+.displaybutton {
+  position: relative;
+  z-index: 2;
   display: none;
+  margin: 1px;
+  padding: 1px;
+  background: transparent;
+  border: transparent;
+
 }
 
-.displayed {
-  display: flex;
-  height: 20px;
-  margin: auto;
+.goalbox:hover .displaybutton {
+  display: block;
 }
 
-.productbox {
-  display: flex;
+.absolute {
+  position: absolute;
+  right: 0px;
+  top: -4px;
+}
+
+.formcontrol {
+  display: block;
+  width: 80%;
+  background: transparent;
+  text-align: center;
+  color: white;
+  outline: 0;
+  border: 0;
+  border-bottom: 1px solid white;
   margin: auto;
 
-  background-color: grey;
 }

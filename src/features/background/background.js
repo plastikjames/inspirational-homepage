@@ -12,17 +12,22 @@ export default function ControlledCarousel() {
     };
 
     return (
-        <Carousel fade activeIndex={index} onSelect={handleSelect} interval={null} className="position-fixed" style={{
+        <Carousel fade activeIndex={index} onSelect={handleSelect} controls={false} interval={null} className="position-fixed" style={{
             zIndex: '-1'
         }}>
             {images.map((image) => {
                 return (
                     <Carousel.Item key={image.id}>
-                        <img
+                        <div
                             className="d-block"
-                            src={image.urls.regular}
-                            alt="First slide"
-                            style={{ width: '100vw', height: '100vh', objectFit: 'cover' }}
+                            style={{
+                                width: '100vw', height: '100vh', objectFit: 'cover', 
+                                backgroundImage: "url(" + image.urls.regular + ")",
+                                backgroundPosition: 'center',
+                                backgroundSize: 'cover',
+                                backgroundRepeat: 'no-repeat'
+                            }}
+
                         />
                     </Carousel.Item>
                 )
