@@ -22,6 +22,8 @@ const Weather = () => {
 
     if (weatherFailed) return <div>FAIL!</div>
 
+    console.log(weatherIsLoading);
+
     if (weatherIsLoading || Object.keys(weatherNow).length === 0) return <div>Loading Weather...</div>
 
     return (
