@@ -20,9 +20,9 @@ const Weather = () => {
     
     if (!longitude) return <div>No Coodinates</div>
 
-    if (weatherIsLoading || Object.keys(weatherNow).length === 0) return <div>Loading Weather</div>
-
     if (weatherFailed) return <div>FAIL!</div>
+
+    if (weatherIsLoading || Object.keys(weatherNow).length === 0) return <div>Loading Weather...</div>
 
     return (
         <div id="weatherbox" className="rounded border border-light glasspane text-white">
