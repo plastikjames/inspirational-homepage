@@ -28,7 +28,7 @@ function App() {
         <h1 className="display-3 text-light">Inspirational Homepage</h1>
         <Quote />
       </div>
-      <div className="container overflow-auto">
+      <div className="container">
         <div className="row">
           <div className="col"></div>
           <div className="col-10">

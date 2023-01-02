@@ -1,27 +1,28 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { selectWeather, isLoadingWeather, loadWeatherAPI } from './weatherSlice';
-
-const location = { lat: -38.661819, lon: 178.028928 };
-
-navigator.geolocation.getCurrentPosition(function (position) {
-    console.log(position.coords);
-    location.lat = position.coords.latitude;
-    location.lon = position.coords.longitude;
-});
-
+import { selectWeather, isLoadingWeather, loadWeatherAPI, failedToLoadWeather } from './weatherSlice';
+import { usePosition } from './usePosition';
 
 const Weather = () => {
     const weatherNow = useSelector(selectWeather);
     const weatherIsLoading = useSelector(isLoadingWeather);
+    const weatherFailed = useSelector(failedToLoadWeather);
     const dispatch = useDispatch();
+    const { latitude, longitude } = usePosition();
+
+    const location = { lat: latitude, lon: longitude };
 
     useEffect(() => {
-        dispatch(loadWeatherAPI(location));
-    }, [dispatch]);
+        if (location.latitude) {
+            dispatch(loadWeatherAPI(location))
+        };
+    }, [location, dispatch]);
+    
+    if (!longitude) return <div>No Coodinates</div>
 
     if (weatherIsLoading || Object.keys(weatherNow).length === 0) return <div>Loading Weather</div>
 
+    if (weatherFailed) return <div>FAIL!</div>
 
     return (
         <div id="weatherbox" className="rounded border border-light glasspane text-white">

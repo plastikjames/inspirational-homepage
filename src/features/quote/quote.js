@@ -1,15 +1,14 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { selectQuote, isLoadingQuote, loadDailyQuote } from './quoteSlice';
+import { selectQuote, loadDailyQuote } from './quoteSlice';
 
 const Quote = () => {
     const quote = useSelector(selectQuote);
-    const quoteIsLoading = useSelector(isLoadingQuote);
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(loadDailyQuote());
-      }, [dispatch]);
+    }, [dispatch]);
 
     return (
         <div id="quote" className="text-white py-2">

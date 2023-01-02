@@ -10,7 +10,7 @@ const GoalsList = () => {
     const dispatch = useDispatch();
 
     return (
-        <div className="rounded border border-light glasspane text-white">
+        <div className="rounded border border-light glasspane text-white ">
                 <div className="d-flex flex-row flex-wrap justify-content-center" >
                     {goals.map((goal) => {
                         return (
