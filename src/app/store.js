@@ -10,6 +10,7 @@ import thunk from 'redux-thunk';
 const persistConfig = {
   key: 'root',
   storage: storage,
+  blacklist: ['weather']
 }
 
 const rootReducer = combineReducers({
