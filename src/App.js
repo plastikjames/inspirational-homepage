@@ -26,9 +26,11 @@ function App() {
       <ControlledCarousel />
       <div className="title py-3">
         <h1 className="display-3 text-light">Inspirational Homepage</h1>
-        <div className="col"></div>
-        <Quote />
-        <div className="col"></div>
+        <div className="row">
+          <div className="col"></div>
+          <Quote />
+          <div className="col"></div>
+        </div>
       </div>
       <div className="container">
         <div className="row">
