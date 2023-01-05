@@ -11,7 +11,7 @@ const Quote = () => {
     }, [dispatch]);
 
     return (
-        <div id="quote" className="text-white py-2">
+        <div id="quote" className="col-8 text-white py-2">
             <q>{quote.quote}</q><p> - {quote.author}</p>
         </div>
     )
