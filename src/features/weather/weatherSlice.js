@@ -6,7 +6,7 @@ export const loadWeatherAPI = createAsyncThunk(
     'weather/loadWeatherAPI',
     async (location) => {
         const data = await fetch(
-            `https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.lon}&appid=${apiKey}&units=metric`
+            `https://api.openweathermap.org/data/2.5/weather?lat=${location.lat.toString()}&lon=${location.lon.toString()}&appid=${apiKey}&units=metric`
         );
         const dataJ = await data.json();
         return (dataJ);
