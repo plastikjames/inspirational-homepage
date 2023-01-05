@@ -5,9 +5,9 @@ const apiKey = "4e46d6c5c0e6aa25c81b4d714b945a7d";
 export const loadWeatherAPI = createAsyncThunk(
     'weather/loadWeatherAPI',
     async (location) => {
-        const data = await fetch(
-            `https://api.openweathermap.org/data/2.5/weather?lat=${location.lat.toString()}&lon=${location.lon.toString()}&appid=${apiKey}&units=metric`
-        );
+        const apiString = `https://api.openweathermap.org/data/2.5/weather?lat=${location.lat.toString()}&lon=${location.lon.toString()}&appid=${apiKey}&units=metric`;
+        console.log(apiString);
+        const data = await fetch(apiString);
         const dataJ = await data.json();
         return (dataJ);
     }
