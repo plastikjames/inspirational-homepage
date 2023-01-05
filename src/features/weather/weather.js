@@ -23,7 +23,7 @@ const Weather = () => {
     if (weatherFailed) return <div>FAIL!</div>
 
     console.log(weatherNow);
-    console.log(weatherIsLoading);
+    console.log(typeof(location.lat));
     console.log(location);
 
     if (weatherIsLoading || Object.keys(weatherNow).length === 0) return <div>Loading Weather...</div>
