@@ -1,42 +1,40 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { selectWeather, isLoadingWeather, loadWeatherAPI, failedToLoadWeather } from './weatherSlice';
-import { usePosition } from './usePosition';
+import { selectWeather, loadWeatherAPI, selectLon, selectLat, getCoords } from './weatherSlice';
 
 const Weather = () => {
     const weatherNow = useSelector(selectWeather);
-    const weatherIsLoading = useSelector(isLoadingWeather);
-    const weatherFailed = useSelector(failedToLoadWeather);
+    const lat = useSelector(selectLat);
+    const lon = useSelector(selectLon);
     const dispatch = useDispatch();
-    const { latitude, longitude } = usePosition();
 
-    const location = { lat: latitude, lon: longitude };
+    let wIcon = `http://openweathermap.org/img/wn/03d@2x.png`;
+    let wName = "------";
+    let wTemp = "--";
 
     useEffect(() => {
-        if (location.latitude) {
-            dispatch(loadWeatherAPI(location))
-        };
-    }, [location, dispatch]);
-    
-    if (!longitude) return <div>No Coodinates</div>
+        dispatch(getCoords())
+        if (lat !== "") {
+            dispatch(loadWeatherAPI({ lat, lon }))
+        }
+    }, [dispatch, lat, lon])
 
-    if (weatherFailed) return <div>FAIL!</div>
 
-    console.log(weatherNow);
-    console.log(typeof(location.lat));
-    console.log(location);
-
-    if (weatherIsLoading || Object.keys(weatherNow).length === 0) return <div>Loading Weather...</div>
+     if (weatherNow) {
+         wIcon = `http://openweathermap.org/img/wn/${weatherNow.weather[0].icon}@2x.png`;
+         wName = weatherNow.name;
+         wTemp = weatherNow.main.temp;
+     }; 
 
     return (
         <div id="weatherbox" className="rounded border border-light glasspane text-white">
             <div className="row align-items-center">
                 <div className="col">
-                    <img id="wicon" src={"http://openweathermap.org/img/w/" + weatherNow.weather[0].icon + ".png"} alt="Weather icon"></img>
+                    <img id="wicon" src={wIcon} alt="Weather icon"></img>
                     {/*<p>{weatherNow.weather[0].description}</p>*/}
                 </div>
-                <div className="col"><h5>{weatherNow.name}</h5></div>
-                <div className="col"><h5>{weatherNow.main.temp + "°"}</h5></div>
+                <div className="col"><h5>{wName}</h5></div>
+                <div className="col"><h5>{wTemp + "°"}</h5></div>
             </div>
         </div>
     )

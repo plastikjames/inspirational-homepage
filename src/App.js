@@ -26,10 +26,10 @@ function App() {
       <ControlledCarousel />
       <div className="title py-3">
         <h1 className="display-3 text-light">Inspirational Homepage</h1>
-        <div className="row">
-          <div className="col"></div>
+        <div className="d-flex justify-content-center">
+   
           <Quote />
-          <div className="col"></div>
+ 
         </div>
       </div>
       <div className="container">
